@@ -1,19 +1,24 @@
+import { useContext, useState } from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { useParams } from "react-router-dom";
 import { css } from "@emotion/css";
 
 import { GET_POKEMON_DETAIL } from "../../graphql/pokemon-detail";
+import { PokemonContext } from "../../context/PokemonContext";
 import TabInfo from "./TabInfo";
 import TabSkill from "./TabSkill";
 import TabCatch from "./TabCatch";
 
 const Detail = () => {
   const param = useParams();
+  const pokemonContext = useContext(PokemonContext);
 
   const { loading, error, data } = useQuery(GET_POKEMON_DETAIL, {
     variables: { name: param.name },
   });
+
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   if (loading) return "Loading...";
   if (error) return `Error${error.message}`;
@@ -63,7 +68,18 @@ const Detail = () => {
             </Route>
           </Switch>
         </div>
-        <button className={button}>Catch</button>
+        <button
+          onClick={() => {
+            pokemonContext.catchPokemon().then((success) => {
+              if (success) {
+                alert("Success!");
+              }
+            });
+          }}
+          className={button}
+        >
+          Catch
+        </button>
       </div>
     </div>
   );

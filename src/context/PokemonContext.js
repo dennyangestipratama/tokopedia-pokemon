@@ -17,7 +17,7 @@ const PokemonContextProvider = ({ children }) => {
 
   let catchPokemon = () => {
     return new Promise(async function (resolve, reject) {
-      Math.floor(Math.random() * 10) > 5
+      Math.floor(Math.random() * 100) > 50
         ? resolve(true)
         : reject(alert("You failed to get pokemon"));
     });
