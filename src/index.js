@@ -1,13 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import PokemonContext from "./context/PokemonContext";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import PokemonContext from './context/PokemonContext'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <PokemonContext>
-      <App />
-    </PokemonContext>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+   <React.StrictMode>
+      <PokemonContext>
+         <App />
+      </PokemonContext>
+   </React.StrictMode>,
+   document.getElementById('root')
+)
