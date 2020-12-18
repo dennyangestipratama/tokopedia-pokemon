@@ -1,8 +1,10 @@
 import { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { PokemonContext } from '../../context/PokemonContext'
 
 const Catch = ({ selectedPokemon, setSelectedPokemon }) => {
+   const history = useHistory()
    const pokemonContext = useContext(PokemonContext)
 
    const submit = (event) => {
@@ -27,10 +29,11 @@ const Catch = ({ selectedPokemon, setSelectedPokemon }) => {
             <form onSubmit={submit}>
                <div></div>
                <input type='text' value={selectedPokemon?.nickname} onChange={(event) => setSelectedPokemon({ ...selectedPokemon, nickname: event.target.value })} />
-               <button>Save</button>
+               <button disabled={selectedPokemon?.nickname === '' ? true : false} onClick={() => history.push(`/pokemon/${selectedPokemon.name}/catch`)}>Save</button>
             </form>
-         ) : null}
-      </div>
+         ) : null
+         }
+      </div >
    )
 }
 

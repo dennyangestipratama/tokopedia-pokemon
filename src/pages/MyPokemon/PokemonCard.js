@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import { css } from '@emotion/css'
 import { useHistory } from 'react-router-dom'
+import { css } from '@emotion/css'
 import { PokemonContext } from '../../context/PokemonContext'
 
 const PokemonCard = ({ pokemon }) => {
@@ -10,23 +10,22 @@ const PokemonCard = ({ pokemon }) => {
    return (
       <div className={card}>
          <span className={title}>{pokemon.name}</span>
-         <div className={cardImage}>
+         <div className={cardImage} onClick={() => history.push(`/pokemon/${pokemon.name}`)}>
             <img src={pokemon.image} alt='pokemon' />
          </div>
          <span className={cardOwned}>{`owned: ${pokemonContext.myPokemon.items.filter(filt => filt.name === pokemon.name).length}`}</span>
-         <button
-            className={css`
-               ${button} &:hover {
-                  color: ${yellowColor};
-               }
-            `}
-            onClick={() => history.push(`/pokemon/${pokemon.name}`)}>
-            See Detail
-         </button>
+         {pokemonContext.myPokemon.items.filter(filt => filt.name === pokemon.name).map(item => {
+            console.log(item)
+            return (
+               <div>
+                  <div>{item.nickname}</div>
+                  <button onClick={() => pokemonContext.releasePokemon(item.nickname)}>release</button>
+               </div>
+            )
+         })}
       </div>
    )
 }
-
 const yellowColor = '#FFCB05'
 const redColor = '#E53935'
 const neutralColor = '#FFFFFF'
@@ -58,21 +57,6 @@ const cardOwned = css({
    color: neutralColor,
    fontsize: 14,
    marginBottom: 25,
-})
-
-const button = css({
-   background: darkColor,
-   padding: '12px 23px',
-   border: 'none',
-   color: neutralColor,
-   borderRadius: 20,
-   fontFamily,
-   fontsize: 18,
-   fontWeight: 'bold',
-   lineHeight: '27px',
-   cursor: 'pointer',
-   textTransform: 'uppercase',
-   marginBottom: 36,
 })
 
 const title = css({

@@ -1,23 +1,25 @@
 import { useContext, Fragment } from 'react'
+import {useParams} from 'react-router-dom'
 import { css } from '@emotion/css'
 
 import { PokemonContext } from '../../context/PokemonContext'
 
 const TabCatch = () => {
+   const params = useParams()
    const pokemonContext = useContext(PokemonContext)
-   console.log(pokemonContext.myPokemon.items)
+   
    return (
       <div>
-         {pokemonContext.myPokemon.items.length === 0 ? (
+         {pokemonContext.myPokemon.items.filter(filt => filt.name === params.name).length === 0 ? (
             <div className={empty_title}>You don't have any of this Pokemon</div>
          ) : (
             <div>
                <div>Catch</div>
-               {pokemonContext.myPokemon.items.map((item) => {
+               {pokemonContext.myPokemon.items.filter(filt => filt.name === params.name).map((item) => {
                   return (
                      <Fragment>
                         <div>{item.nickname}</div>
-                        <button>release</button>
+                        <button onClick={() => pokemonContext.releasePokemon(item.nickname)}>release</button>
                      </Fragment>
                   )
                })}

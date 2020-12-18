@@ -65,6 +65,7 @@ const Detail = () => {
                         setSelectedPokemon({
                            ID: data.pokemon.id,
                            name: data.pokemon.name,
+                           image: data.pokemon.sprites.front_default,
                            nickname: '',
                         })
                      }

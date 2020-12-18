@@ -8,10 +8,10 @@ const PokemonContextProvider = ({ children }) => {
     items: JSON.parse(localStorage.getItem('myPokemon')) ?? [],
   })
 
-  const releasePokemon = (id) => {
+  const releasePokemon = (nickname) => {
     setMyPokemon((prevState) => ({
       ...prevState,
-      items: myPokemon.items.filter((item) => item.id !== id),
+      items: myPokemon.items.filter((item) => item.nickname !== nickname),
     }))
   }
 
