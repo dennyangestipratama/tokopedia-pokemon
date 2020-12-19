@@ -15,9 +15,9 @@ const TabCatch = () => {
          ) : (
             <div>
                <div>Catch</div>
-               {pokemonContext.myPokemon.items.filter(filt => filt.name === params.name).map((item) => {
+               {pokemonContext.myPokemon.items.filter(filt => filt.name === params.name).map((item, index) => {
                   return (
-                     <Fragment>
+                     <Fragment key={index}>
                         <div>{item.nickname}</div>
                         <button onClick={() => pokemonContext.releasePokemon(item.nickname)}>release</button>
                      </Fragment>

@@ -16,8 +16,10 @@ const PokemonContextProvider = ({ children }) => {
   }
 
   let catchPokemon = () => {
+    const value = Math.floor(Math.random() * 100) > 50
     return new Promise(async function (resolve, reject) {
-      Math.floor(Math.random() * 100) > 50 ? resolve(true) : reject(alert('You failed to get pokemon'))
+      console.log(value)
+      value ? resolve(true) : resolve(false)
     })
   }
 
@@ -29,7 +31,7 @@ const PokemonContextProvider = ({ children }) => {
     return new Promise(async function (resolve, reject) {
       myPokemon.items.filter((item) => item?.nickname.toLowerCase() === nickname.nickname.toLowerCase()).length === 0
         ? resolve(true)
-        : reject(alert('You already have the same name'))
+        : resolve(false)
     })
   }
 

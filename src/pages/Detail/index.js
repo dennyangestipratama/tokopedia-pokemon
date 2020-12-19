@@ -6,7 +6,7 @@ import { css } from '@emotion/css'
 
 import { GET_POKEMON_DETAIL } from '../../graphql/pokemon-detail'
 import { PokemonContext } from '../../context/PokemonContext'
-import Catch from './Catch'
+import { Success, Failed } from './Modal'
 import TabInfo from './TabInfo'
 import TabSkill from './TabSkill'
 import TabCatch from './TabCatch'
@@ -19,6 +19,9 @@ const Detail = () => {
       variables: { name: param.name },
    })
 
+   const [showModal, setShowModal] = useState(false)
+   const [showModalError, setShowModalError] = useState(false)
+
    const [selectedPokemon, setSelectedPokemon] = useState(null)
 
    if (loading) return 'Loading...'
@@ -26,7 +29,8 @@ const Detail = () => {
 
    return (
       <div className={pokemon}>
-         <Catch selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} />
+         {showModal ? <Success selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} setShowModal={setShowModal} setShowModalError={setShowModalError} /> : null}
+         {showModalError ? <Failed data={data} selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} setShowModal={setShowModal} setShowModalError={setShowModalError} /> : null}
          <div className={pokemon_card}>
             <div className={pokemon_image}>
                <img src={data.pokemon.sprites.front_default} alt='front' />
@@ -58,16 +62,20 @@ const Detail = () => {
                </Switch>
             </div>
             <button
+               disabled={showModal ? true : false}
                onClick={() => {
                   pokemonContext.catchPokemon().then((success) => {
+                     console.log(success)
                      if (success) {
-                        alert('Success!')
+                        setShowModal(true)
                         setSelectedPokemon({
                            ID: data.pokemon.id,
                            name: data.pokemon.name,
                            image: data.pokemon.sprites.front_default,
                            nickname: '',
                         })
+                     } else {
+                        setShowModalError(true)
                      }
                   })
                }}

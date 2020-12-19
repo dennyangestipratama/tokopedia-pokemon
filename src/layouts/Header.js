@@ -6,7 +6,7 @@ import { ReactComponent as Pokeball } from '../assets/pokeball.svg'
 const Header = () => {
    return (
       <div className={header}>
-         <Link className={text} exact to='/'>
+         <Link className={text} to='/'>
             <Pokeball className={icon} />
          </Link>
          <Link className={text} to='/mine'>
