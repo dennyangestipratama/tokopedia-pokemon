@@ -29,8 +29,17 @@ const Detail = () => {
 
    return (
       <div className={pokemon}>
-         {showModal ? <Success selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} setShowModal={setShowModal} setShowModalError={setShowModalError} /> : null}
-         {showModalError ? <Failed data={data} selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} setShowModal={setShowModal} setShowModalError={setShowModalError} /> : null}
+         {showModal ? <Success
+            selectedPokemon={selectedPokemon}
+            setSelectedPokemon={setSelectedPokemon}
+            setShowModal={setShowModal}
+         /> : null}
+         {showModalError ? <Failed
+            data={data}
+            setSelectedPokemon={setSelectedPokemon}
+            setShowModal={setShowModal}
+            setShowModalError={setShowModalError}
+         /> : null}
          <div className={pokemon_card}>
             <div className={pokemon_image}>
                <img src={data.pokemon.sprites.front_default} alt='front' />
@@ -106,6 +115,7 @@ const pokemon_card = css({
    display: 'flex',
    padding: '25px 40px 25px 42px',
    minHeight: '400px',
+   width: '900px'
 })
 
 const title = css({
@@ -142,7 +152,7 @@ const content = css({
    display: 'flex',
    flexDirection: 'column',
    paddingLeft: 54,
-   paddingRight: 103,
+   paddingRight: 90,
 })
 
 const pokemon_image = css({

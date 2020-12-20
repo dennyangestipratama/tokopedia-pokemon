@@ -1,5 +1,5 @@
 import { css } from '@emotion/css'
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import { PokemonContext } from '../../context/PokemonContext'
@@ -7,7 +7,7 @@ import { PokemonContext } from '../../context/PokemonContext'
 import Ash from '../../assets/ash.png'
 import Pikachu from '../../assets/pikachu.png'
 
-export const Success = ({ selectedPokemon, setSelectedPokemon, setShowModal, setShowModalError }) => {
+export const Success = ({ selectedPokemon, setSelectedPokemon, setShowModal }) => {
    const pokemonContext = useContext(PokemonContext)
    const history = useHistory()
 
@@ -52,7 +52,6 @@ export const Success = ({ selectedPokemon, setSelectedPokemon, setShowModal, set
                <div className={button}>
                   <button type='reset' className={button_alpha} onClick={() => {
                      setShowModal(false)
-                     setShowModalError(false)
                   }}>Release</button>
                   <button
                      type='submit'
@@ -68,9 +67,9 @@ export const Success = ({ selectedPokemon, setSelectedPokemon, setShowModal, set
    )
 }
 
-export const Failed = ({ selectedPokemon, setSelectedPokemon, setShowModal, setShowModalError, data }) => {
+export const Failed = ({ setSelectedPokemon, setShowModal, setShowModalError, data }) => {
    const pokemonContext = useContext(PokemonContext)
-   console.log(data)
+
    return (
       <div className={fail}>
          <div className={title}>Oh no ...</div>
@@ -78,32 +77,35 @@ export const Failed = ({ selectedPokemon, setSelectedPokemon, setShowModal, setS
          <div className={fail_wrapper} >
             <img className={fail_img} src={Pikachu} alt="pikachu" />
             <div className={button}>
-               <button type='reset' className={button_alpha} onClick={() => {
+               <button className={button_alpha} onClick={() => {
                   setShowModalError(false)
-                  setShowModal(false)
                }}>Leave</button>
                <button
-                  type='submit'
                   className={button_beta}
-                  disabled={selectedPokemon?.nickname === '' ? true : false}
                   onClick={() => {
-                     pokemonContext.catchPokemon().then((success) => {
-                        setShowModalError(false)
-                        if (success) {
-                           setShowModal(true)
-                           setSelectedPokemon({
-                              ID: data.pokemon.id,
-                              name: data.pokemon.name,
-                              image: data.pokemon.sprites.front_default,
-                              nickname: '',
-                           })
-                        } else {
-                           setShowModalError(true)
-                        }
-                     })
+                     setShowModalError(false)
+                     setTimeout(() => {
+                        pokemonContext.catchPokemon().then((success) => {
+                           if (success) {
+                              setTimeout(() => {
+                                 setShowModal(true)
+                                 setSelectedPokemon({
+                                    ID: data.pokemon.id,
+                                    name: data.pokemon.name,
+                                    image: data.pokemon.sprites.front_default,
+                                    nickname: '',
+                                 })
+                              }, 300);
+                           } else {
+                              setTimeout(() => {
+                                 setShowModalError(true)
+                              }, 300);
+                           }
+                        })
+                     }, 200)
                   }}>
                   Try Again
-            </button>
+               </button>
             </div>
          </div>
       </div >

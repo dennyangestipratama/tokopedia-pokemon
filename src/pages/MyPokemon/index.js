@@ -32,6 +32,7 @@ const home = css({
    rowGap: 20,
    padding: '120px 50px 30px',
    maxWidth: '1440px',
+   justifyItems: 'center',
    margin: '0 auto',
 })
 
