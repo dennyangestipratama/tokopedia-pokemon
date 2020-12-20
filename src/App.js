@@ -1,19 +1,52 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { Global, css as cssReset } from '@emotion/react'
+import { createHttpLink } from "apollo-link-http";
+import { InMemoryCache } from "apollo-cache-inmemory";
 import { css } from '@emotion/css'
+import Loadable from 'react-loadable';
 import emotionReset from 'emotion-reset'
-import ApolloClient from 'apollo-boost'
+import ApolloClient from 'apollo-client';
 
-import Header from './layouts/Header'
-import Home from './pages/Home'
-import Detail from './pages/Detail'
-import MyPokemon from './pages/MyPokemon'
+const Header = Loadable({
+   loader: () => import(/* webpackChunkName: "HeaderChunk" */ './layouts/Header'),
+   loading: () => null
+})
+
+const Home = Loadable({
+   loader: () => import(/* webpackChunkName: "HomeChunk" */'./pages/Home'),
+   loading: () => null
+})
+
+const Detail = Loadable({
+   loader: () => import(/* webpackChunkName: "DetailChunk" */'./pages/Detail'),
+   loading: () => null
+})
+
+const MyPokemon = Loadable({
+   loader: () => import(/* webpackChunkName: "MyPokemonChunk" */'./pages/MyPokemon'),
+   loading: () => null
+})
 
 const App = () => {
+
+   const customFetch = (uri, options) => {
+      return fetch(uri, options)
+         .then(response => {
+            if (response.status >= 500) {  // or handle 400 errors
+               return Promise.reject(response.status);
+            }
+            return response;
+         });
+   };
+
    const client = new ApolloClient({
-      uri: 'https://graphql-pokeapi.vercel.app/api/graphql',
-   })
+      link: createHttpLink({
+         uri: 'https://graphql-pokeapi.vercel.app/api/graphql',
+         fetch: customFetch,
+      }),
+      cache: new InMemoryCache()
+   });
 
    return (
       <ApolloProvider client={client}>
@@ -29,14 +62,14 @@ const App = () => {
             }
           `}
             />
-            <main className={main}>
+            <div className={main}>
                <Header />
                <Route exact path='/' component={Home} />
                <Route path='/pokemon/:name' component={Detail} />
                <Route path='/mine' component={MyPokemon} />
                <Route path='/asdasd' component={MyPokemon} />
                <Route path='/qweqwe' component={MyPokemon} />
-            </main>
+            </div>
          </Router>
       </ApolloProvider>
    )

@@ -3,6 +3,7 @@ import { NavLink, Route, Switch } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 import { useParams } from 'react-router-dom'
 import { css } from '@emotion/css'
+import ClipLoader from "react-spinners/ClipLoader";
 
 import { GET_POKEMON_DETAIL } from '../../graphql/pokemon-detail'
 import { PokemonContext } from '../../context/PokemonContext'
@@ -24,7 +25,19 @@ const Detail = () => {
 
    const [selectedPokemon, setSelectedPokemon] = useState(null)
 
-   if (loading) return 'Loading...'
+   if (loading) return (
+      <div className={pokemon}>
+         <div className={pokemon_card}>
+            <div className={loader}>
+               <ClipLoader
+                  size={70}
+                  color={"#E53935"}
+               />
+            </div>
+         </div>
+      </div>
+   )
+
    if (error) return `Error${error.message}`
 
    return (
@@ -106,6 +119,10 @@ const pokemon = css({
    justifyContent: 'center',
    flexDirection: 'column',
    minHeight: '90vh',
+})
+
+const loader = css({
+   margin: 'auto'
 })
 
 const pokemon_card = css({

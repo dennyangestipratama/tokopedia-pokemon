@@ -1,6 +1,7 @@
 import { useState, Fragment } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { css } from '@emotion/css'
+import ClipLoader from "react-spinners/ClipLoader";
 
 import { GET_POKEMONS_LIST } from '../../graphql/pokemons-list'
 import PokemonCard from './PokemonCard'
@@ -24,7 +25,19 @@ const Home = () => {
       setOffset((prevState) => prevState - 12)
    }
 
-   if (loading) return 'Loading...'
+   if (loading) return (
+      <div className={home}>
+         {Array.apply(null, Array(9)).map(() => (
+            <div className={card}>
+               <ClipLoader
+                  size={70}
+                  color={"#FFFFFF"}
+               />
+            </div>
+         ))}
+      </div>
+   )
+
    if (error) return `Error${error.message}`
 
    return (
@@ -51,6 +64,18 @@ const neutralColor = '#FFFFFF'
 const darkColor = '#303C42'
 const yellowColor = '#FFCB05'
 const fontFamily = 'Poppins, sans-serif'
+const redColor = '#E53935'
+
+const card = css({
+   display: 'flex',
+   flexDirection: 'column',
+   alignItems: 'center',
+   justifyContent: 'center',
+   background: redColor,
+   border: `8px solid ${darkColor}`,
+   borderRadius: 22,
+   minHeight: 384
+})
 
 const home = css({
    display: 'grid',

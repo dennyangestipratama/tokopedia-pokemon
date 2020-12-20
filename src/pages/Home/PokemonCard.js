@@ -1,12 +1,18 @@
 import { useContext } from 'react'
 import { css } from '@emotion/css'
 import { useHistory } from 'react-router-dom'
+import ClipLoader from "react-spinners/ClipLoader";
+
 import { PokemonContext } from '../../context/PokemonContext'
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, loading }) => {
    const history = useHistory()
    const pokemonContext = useContext(PokemonContext)
 
+   if (loading) return <ClipLoader
+      size={150}
+      color={"#123abc"}
+   />
    return (
       <div className={card}>
          <span className={title}>{pokemon.name}</span>
