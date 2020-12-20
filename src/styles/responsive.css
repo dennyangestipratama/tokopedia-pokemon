@@ -114,4 +114,18 @@
       padding: 0 2rem !important;
       overflow: auto !important;
    }
+   
+   .css-960nzr, .css-1p5ney{
+      width: 18rem !important;
+      border-radius: 15px !important;
+   }
+   
+   .css-1hgciv7 {
+      font-size: 32px !important;
+      line-height: 50px !important;
+   }
+
+   .css-oabu28, .css-1v41ayq{
+      z-index: -1 !important;
+   }
  }
