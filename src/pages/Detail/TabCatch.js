@@ -13,7 +13,7 @@ const TabCatch = () => {
          {pokemonContext.myPokemon.items.filter(filt => filt.name === params.name).length === 0 ? (
             <div className={empty_title}>You don't have any of this Pokemon</div>
          ) : (
-            <div>
+            <div className='tab-responsive'>
                <div className={title}>Catch</div>
                <div className={name_wrapper}>
                {pokemonContext.myPokemon.items.filter(filt => filt.name === params.name).map((item, index) => {

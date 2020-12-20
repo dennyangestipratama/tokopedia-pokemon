@@ -1,16 +1,15 @@
-import { Fragment } from 'react'
 import { css } from '@emotion/css'
 
 const TabSkill = ({ pokemon }) => {
    return (
-      <Fragment>
+      <div className='tab-responsive'>
          <div className={title}>Move: </div>
          <div className={move}>
             {pokemon.moves.slice(0, 10).map((item) => (
                <div className={move_title}>{item.move.name.replace('-', ' ')}</div>
             ))}
          </div>
-      </Fragment>
+      </div>
    )
 }
 

@@ -1,4 +1,4 @@
-import { useContext, Fragment } from 'react'
+import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { css } from '@emotion/css'
 import { PokemonContext } from '../../context/PokemonContext'
@@ -9,29 +9,26 @@ const PokemonCard = ({ pokemon }) => {
 
    return (
       <div className={card}>
-         {pokemon.length === 0 ? <div>You don't have any Pokemon</div> :
-            <Fragment>
-               <span className={title}>{pokemon.name}</span>
-               <div className={cardImage}>
-                  <img src={pokemon.image} alt='pokemon' />
-               </div>
-               <span className={cardOwned}>{`owned: ${pokemonContext.myPokemon.items.filter(filt => filt.name === pokemon.name).length}`}</span>
-               <button
-                  className={detail_button}
-                  onClick={() => history.push(`/pokemon/${pokemon.name}/catch`)}>
-                  See Detail
+         <span className={title}>{pokemon.name}</span>
+         <div className={cardImage}>
+            <img src={pokemon.image} alt='pokemon' />
+         </div>
+         <span className={cardOwned}>{`owned: ${pokemonContext.myPokemon.items.filter(filt => filt.name === pokemon.name).length}`}</span>
+         <button
+            className={detail_button}
+            onClick={() => history.push(`/pokemon/${pokemon.name}/catch`)}>
+            See Detail
                </button>
-               <div className={container}>
-                  {pokemonContext.myPokemon.items.filter(filt => filt.name === pokemon.name).map((item, index) => {
-                     return (
-                        <div className={item_wrapper} key={index}>
-                           <div className={title_name}>{item.nickname}</div>
-                           <button className={button} onClick={() => pokemonContext.releasePokemon(item.nickname)}>release</button>
-                        </div>
-                     )
-                  })}
-               </div>
-            </Fragment>}
+         <div className={container}>
+            {pokemonContext.myPokemon.items.filter(filt => filt.name === pokemon.name).map((item, index) => {
+               return (
+                  <div className={item_wrapper} key={index}>
+                     <div className={title_name}>{item.nickname}</div>
+                     <button className={button} onClick={() => pokemonContext.releasePokemon(item.nickname)}>release</button>
+                  </div>
+               )
+            })}
+         </div>
       </div>
    )
 }
@@ -50,7 +47,7 @@ const card = css({
    background: redColor,
    border: `8px solid ${darkColor}`,
    borderRadius: 22,
-   width: '435px'
+   width: '100%'
 })
 
 const cardImage = css({

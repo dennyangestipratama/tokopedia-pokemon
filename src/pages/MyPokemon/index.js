@@ -17,13 +17,14 @@ const MyPokemon = () => {
    return (
       <Fragment>
          <div className={home}>
-            {listPokemon.map((pokemon) => (
+            {listPokemon.length === 0 ? <div className={empty_title}>You don't have any Pokemon</div> : listPokemon.map((pokemon) => (
                <PokemonCard key={pokemon.ID} pokemon={pokemon} />
             ))}
          </div>
       </Fragment>
    )
 }
+const fontFamily = 'Poppins, sans-serif'
 
 const home = css({
    display: 'grid',
@@ -35,5 +36,17 @@ const home = css({
    justifyItems: 'center',
    margin: '0 auto',
 })
+
+const empty_title = css({
+   fontFamily,
+   textTransform: 'uppercase',
+   lineHeight: '15px',
+   letterSpacing: '0.2em',
+   fontSize: 10,
+   fontWeight: '500',
+   marginTop: 60,
+   minHeight: '50vh'
+})
+
 
 export default MyPokemon

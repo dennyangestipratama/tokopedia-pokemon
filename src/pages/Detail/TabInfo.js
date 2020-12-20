@@ -2,7 +2,7 @@ import { css } from '@emotion/css'
 
 const TabInfo = ({ pokemon }) => {
    return (
-      <div>
+      <div className='tab-responsive'>
          <div className={type}>
             <div className={title}>Type :</div>
             {pokemon.types.map((item, index) => (
