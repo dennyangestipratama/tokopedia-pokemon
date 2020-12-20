@@ -8,6 +8,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { GET_POKEMON_DETAIL } from '../../graphql/pokemon-detail'
 import { PokemonContext } from '../../context/PokemonContext'
 import { Success, Failed } from './Modal'
+import Meta from '../../components/meta'
 import TabInfo from './TabInfo'
 import TabSkill from './TabSkill'
 import TabCatch from './TabCatch'
@@ -42,6 +43,7 @@ const Detail = () => {
 
    return (
       <div className={pokemon}>
+         <Meta title={`${data.pokemon.name.charAt(0).toUpperCase()}${data.pokemon.name.slice(1)}`} />
          {showModal ? <Success
             selectedPokemon={selectedPokemon}
             setSelectedPokemon={setSelectedPokemon}

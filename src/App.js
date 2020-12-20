@@ -8,6 +8,8 @@ import Loadable from 'react-loadable';
 import emotionReset from 'emotion-reset'
 import ApolloClient from 'apollo-client';
 
+import Meta from './components/meta.js'
+
 const Header = Loadable({
    loader: () => import(/* webpackChunkName: "HeaderChunk" */ './layouts/Header'),
    loading: () => null
@@ -64,6 +66,7 @@ const App = () => {
             />
             <div className={main}>
                <Header />
+               <Meta />
                <Route exact path='/' component={Home} />
                <Route path='/pokemon/:name' component={Detail} />
                <Route path='/mine' component={MyPokemon} />

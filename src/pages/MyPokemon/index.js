@@ -2,6 +2,7 @@ import { Fragment, useContext } from 'react'
 import { css } from '@emotion/css'
 
 import { PokemonContext } from '../../context/PokemonContext'
+import Meta from '../../components/meta'
 import PokemonCard from './PokemonCard'
 
 const MyPokemon = () => {
@@ -16,6 +17,7 @@ const MyPokemon = () => {
 
    return (
       <Fragment>
+         <Meta title='Inventory' />
          <div className={home}>
             {listPokemon.length === 0 ? <div className={empty_title}>You don't have any Pokemon</div> : listPokemon.map((pokemon) => (
                <PokemonCard key={pokemon.ID} pokemon={pokemon} />

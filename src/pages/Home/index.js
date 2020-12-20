@@ -4,6 +4,7 @@ import { css } from '@emotion/css'
 import ClipLoader from "react-spinners/ClipLoader";
 
 import { GET_POKEMONS_LIST } from '../../graphql/pokemons-list'
+import Meta from '../../components/meta'
 import PokemonCard from './PokemonCard'
 
 const Home = () => {
@@ -42,6 +43,7 @@ const Home = () => {
 
    return (
       <Fragment>
+         <Meta title='Home' />
          <div className={home}>
             {data.pokemons.results.map((pokemon) => (
                <PokemonCard key={pokemon.id} pokemon={pokemon} />
