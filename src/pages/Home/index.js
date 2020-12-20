@@ -4,7 +4,6 @@ import { css } from '@emotion/css'
 
 import { GET_POKEMONS_LIST } from '../../graphql/pokemons-list'
 import PokemonCard from './PokemonCard'
-import '../../styles/responsive.css'
 
 const Home = () => {
    const limit = 11

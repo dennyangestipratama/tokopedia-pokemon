@@ -1,131 +1,131 @@
 @media only screen and (max-width: 768px) {
    .css-1k5h1uj{
-      min-height: 100% !important;
+      min-height: 100%;
    }
    
    .css-1mkotc1, .css-1d0h05b {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
-      padding: 120px 20px 30px !important;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      padding: 120px 20px 30px;
    }
 
    .css-dj9vb5, .css-y0zs0l{
-      width: 100% !important;
+      width: 100%;
    }
 
    .css-y0zs0l{
-      padding-bottom: 2rem !important;
+      padding-bottom: 2rem;
    }
 
    .css-2zz69n {
-      padding-bottom: 2rem !important;
+      padding-bottom: 2rem;
    }
 
    .css-qbkht5{
-      grid-template-columns: 1fr !important;
-      max-height: none !important;
-      padding: 0 !important;
+      grid-template-columns: 1fr;
+      max-height: none;
+      padding: 0;
    }
 
    .css-ucllh4{
-      padding: 4px 23px !important;
-      font-size: 12px !important;
+      padding: 4px 23px;
+      font-size: 12px;
    }
 
    .css-1is9mja{
-      padding: 0 1rem !important;
-      height: 10rem !important;
-      overflow: auto !important;
+      padding: 0 1rem;
+      height: 10rem;
+      overflow: auto;
    }
 
    .css-otxm47{
-      min-height: 50px !important;
+      min-height: 50px;
    }
 
    .css-1gz2x1t{
-      -webkit-text-stroke: 0 !important;
-      font-size: 17px !important;
+      -webkit-text-stroke: 0;
+      font-size: 17px;
    }
 
    .css-kn8g4l{
-      width: 70px !important;
-      height: 100px !important;
-      top: 0 !important;
-      left: 25% !important;
+      width: 70px;
+      height: 100px;
+      top: 0;
+      left: 25%;
    }
    
    .css-kn8g4l:hover{
-      animation: none !important;
-      left: 25% !important;
+      animation: none;
+      left: 25%;
 
    }
 
    .css-mt22wp{
-      min-height: 50vh !important;
+      min-height: 50vh;
    }
 
    .css-1n5ytzw {
-      width: 100% !important;
-      height: 25rem !important;
-      background-color: #FFFFFF !important;
-      padding: 0 2rem 2rem !important;
-      flex-direction: column !important;
-      position: fixed !important;
-      bottom: 0 !important;
-      border-radius: 55px 55px 0 0 !important;
-      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25) !important;
+      width: 100%;
+      height: 25rem;
+      background-color: #FFFFFF;
+      padding: 0 2rem 2rem;
+      flex-direction: column;
+      position: fixed;
+      bottom: 0;
+      border-radius: 55px 55px 0 0;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
    }
 
    .css-1h6x6mq {
-      flex-direction: row !important;
+      flex-direction: row;
    }
 
    .css-70qvj9 {
-      justify-content: center !important;
+      justify-content: center;
    }
 
    .css-1rbz9bi, .css-1o6jcjk{
-      word-break: break-all !important;
+      word-break: break-all;
    }
 
    .css-ktk0j1{
-      padding: 0 !important;
+      padding: 0;
    }
 
    .css-179z6wq{
-      width: 100% !important;
-      text-align: center !important;
+      width: 100%;
+      text-align: center;
    }
 
    .css-8kbtzx{
-      grid-template-columns: 1fr !important;
+      grid-template-columns: 1fr;
    }
 
    .css-1klausw{
-      width: 100% !important;
-      height: 3rem !important;
-      border-radius: 0 !important;
-      position: fixed !important;
-      bottom: 0 !important;
-      left: 0 !important;
+      width: 100%;
+      height: 3rem;
+      border-radius: 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
    }
 
    .tab-responsive{
-      height: 10rem !important;
-      padding: 0 2rem !important;
-      overflow: auto !important;
+      height: 10rem;
+      padding: 0 2rem;
+      overflow: auto;
    }
    
    .css-960nzr, .css-1p5ney{
-      width: 18rem !important;
-      border-radius: 15px !important;
+      width: 18rem;
+      border-radius: 15px;
    }
    
    .css-1hgciv7 {
-      font-size: 32px !important;
-      line-height: 50px !important;
+      font-size: 32px;
+      line-height: 50px;
    }
 
    .css-oabu28, .css-1v41ayq{
-      z-index: -1 !important;
+      z-index: -1;
    }
  }
